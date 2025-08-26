@@ -146,13 +146,14 @@ public:
             return 1;
         }
         if(result==l_False) {
-            return -1;
+            return 0;
         }
         if(result==l_Undef) {
-            return 0;
+            return -1;
         }
 
         assert(false);
+        return -1;
     }
 
 
@@ -183,13 +184,14 @@ public:
             return 1;
         }
         if(result==l_False) {
-            return -1;
+            return 0;
         }
         if(result==l_Undef) {
-            return 0;
+            return -1;
         }
 
         assert(false);
+        return -1;
     }
 
     template<class T>
@@ -216,13 +218,14 @@ public:
             return 1;
         }
         if(result==l_False) {
-            return -1;
+            return 0;
         }
         if(result==l_Undef) {
-            return 0;
+            return -1;
         }
 
         assert(false);
+        return -1;
     }
 
     unsigned int nVars() {
