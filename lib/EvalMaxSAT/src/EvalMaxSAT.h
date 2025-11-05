@@ -368,6 +368,23 @@ public:
             solutionCost = std::numeric_limits<t_weight>::max();
         }
 
+        for(auto lit: _litToRelax) {
+            relax(lit);
+        }
+        _litToRelax.clear();
+
+        for(auto c: _cardToAdd) {
+            std::shared_ptr<CardIncremental_Lazy<EvalMaxSAT<SAT_SOLVER>>> card = std::make_shared<CardIncremental_Lazy<EvalMaxSAT<SAT_SOLVER>>>(this, std::get<0>(c), 1);
+            int newAssumForCard = card->atMost(1);
+            if(newAssumForCard != 0) {
+                assert( _poids[newAssumForCard] == 0 );
+                _poids.set(newAssumForCard, std::get<1>(c));
+                _mapWeight2Assum[ std::get<1>(c) ].insert(newAssumForCard);
+                _mapAssum2Card[ abs(newAssumForCard) ] = LitCard(card, 1, std::get<1>(c));
+            }
+        }
+        _cardToAdd.clear();
+
         totalSolveTimeout.restart();
 
         MonPrint("c initial cost = ", cost);
