@@ -13,7 +13,7 @@ set(public_libs
 
 set(private_libs
 	MaLib
-	glucose
+	# glucose
 	cadical
 	EvalMaxSAT
 	z

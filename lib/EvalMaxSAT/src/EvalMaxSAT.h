@@ -12,7 +12,6 @@
 #include "Chrono.h"
 #include "coutUtil.h"
 #include "cadicalinterface.h"
-#include "glucoseinterface.h"
 #include "cardincremental.h"
 #include "rand.h"
 #include "mcqd.h"

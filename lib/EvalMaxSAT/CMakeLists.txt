@@ -12,7 +12,6 @@ set(public_libs
 
 set(private_libs
     MaLib
-    glucose
 	cadical
 )
 
