@@ -12,20 +12,14 @@ target_link_libraries(${projectName} PRIVATE MaLib)
 # Ensure cadical is built before we try to merge it
 add_dependencies(${projectName} cadical)
 
-# Add custom command to merge archives after build with symbol localization
+# Add custom command to merge archives after build with symbol hiding via partial linking
 add_custom_command(TARGET ${projectName} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp/cadical
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp/evalmaxsat
-    # Extract cadical objects
-    COMMAND cd ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp/cadical && ar x ${CMAKE_BINARY_DIR}/lib/cadical/libcadical.a
-    # Localize all symbols in cadical object files to prevent conflicts
-    COMMAND find ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp/cadical -name "*.o" -exec objcopy --localize-hidden {} "\;"
-    # Extract EvalMaxSAT objects
-    COMMAND cd ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp/evalmaxsat && ar x $<TARGET_FILE:${projectName}>
-    # Merge everything back - use shell to expand globs
-    COMMAND sh -c "ar rcs $<TARGET_FILE:${projectName}> ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp/cadical/*.o ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp/evalmaxsat/*.o"
-    COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/merge_cadical.sh
+            ${CMAKE_CURRENT_BINARY_DIR}/merge_tmp
+            ${CMAKE_BINARY_DIR}/lib/cadical/libcadical.a
+            $<TARGET_FILE:${projectName}>
+    COMMENT "Merging cadical into libEvalMaxSAT.a with symbol localization"
+    VERBATIM
 )
 
 install(TARGETS ${projectName}
