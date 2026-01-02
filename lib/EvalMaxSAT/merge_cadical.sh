@@ -16,19 +16,23 @@ mkdir -p "${MERGE_DIR}/evalmaxsat"
 cd "${MERGE_DIR}/cadical"
 ar x "${CADICAL_LIB}"
 
-# Rename all symbols in cadical objects by adding prefix
-for obj in *.o; do
-    objcopy --prefix-symbols="${PREFIX}" "$obj"
-done
+# Combine all cadical objects using partial linking first
+ld -r -o ../cadical_combined.o *.o
 
-# Get list of object files before creating combined one
-OBJ_FILES=(*.o)
-
-# Combine all cadical objects using partial linking
-ld -r -o ../cadical_combined.o "${OBJ_FILES[@]}"
-
-# Go back up and remove the extracted directory
+# Go back up and create a symbol rename map for only CaDiCaL symbols
 cd ..
+# Extract global CaDiCaL symbols and create redefine rules
+# Only rename CaDiCaL namespace symbols, not system symbols
+nm cadical_combined.o | grep -E "^[0-9a-f]+ [TtRrDdBb] " | \
+    grep -E "(_ZN7CaDiCaL|_ZNK7CaDiCaL|_ZTI.*CaDiCaL|_ZTV.*CaDiCaL|_ZTS.*CaDiCaL|ccadical_)" | \
+    awk -v prefix="${PREFIX}" '{print $3 " " prefix $3}' | sort -u > cadical_symbol_map.txt
+
+# Apply the symbol renaming to the combined object
+if [ -s cadical_symbol_map.txt ]; then
+    objcopy --redefine-syms=cadical_symbol_map.txt cadical_combined.o
+fi
+
+# Remove the extracted directory
 rm -rf cadical
 
 # Extract EvalMaxSAT objects
@@ -52,6 +56,4 @@ ar rcs "${EVALMAXSAT_LIB}" "${MERGE_DIR}/cadical_combined.o" *.o
 
 # Cleanup
 cd /
-#rm -rf "${MERGE_DIR}"  # Temporarily disabled for debugging
-echo "DEBUG: Merge dir is at ${MERGE_DIR}"
-[ -f "${MERGE_DIR}/symbol_map.txt" ] && echo "DEBUG: symbol_map.txt contents:" && cat "${MERGE_DIR}/symbol_map.txt" | head -10
+rm -rf "${MERGE_DIR}"
