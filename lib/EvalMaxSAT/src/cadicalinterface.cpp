@@ -1,5 +1,5 @@
 #include "cadicalinterface.h"
-#include "cadical.hpp"
+#include "../../cadical/src/cadical.hpp"
 
 MySolver::MySolver() {
     solver = new CaDiCaL::Solver();

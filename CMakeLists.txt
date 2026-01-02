@@ -12,6 +12,10 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 enable_language( CXX )
 enable_language( C )
 option(BUILD_SHARED_LIBS "Build the shared library" ON)
+option(STATICCOMPILE "Compile to static executable" OFF)
+if (STATICCOMPILE)
+    set(BUILD_SHARED_LIBS OFF)
+endif()
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
@@ -25,5 +29,5 @@ add_subdirectory(lib/MaLib)
 add_subdirectory(lib/cadical)
 add_subdirectory(lib/EvalMaxSAT)
 
-add_subdirectory(main)
+# add_subdirectory(main)
 
