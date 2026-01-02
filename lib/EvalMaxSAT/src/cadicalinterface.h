@@ -1,42 +1,36 @@
 #pragma once
 
 
-#include "cadical.hpp"
-#include "internal.hpp"
-
 #include <cmath>
 #include <cassert>
 #include <vector>
 #include <set>
 
 
+struct MySolver {
+    void* solver;
+    MySolver();
+    ~MySolver();
+    void add(int lit);
+    int solve();
+    void assume(int lit);
+    bool val(int lit);
+    void simplify();
+    void limit(const char* what, int limit);
+    void setTimeout(double seconds);
+    std::vector<bool> getSolution();
+    void reset_assumptions();
+    bool find_up_implicants(const std::vector<int> &assum, std::vector<int> &result);
+    bool failed(int lit);
+};
+
 class Solver_cadical {
-    CaDiCaL::Solver *solver;
+    MySolver *solver;
     unsigned int nVar=0;
 public:
 
-    Solver_cadical() : solver(new CaDiCaL::Solver()) {}
-
-    ~Solver_cadical() {
-        delete solver;
-    }
-
-    template<class T>
-    void exportClauses(T& to) const {
-        for (auto idx : solver->internal->vars) {
-            const int tmp = solver->internal->fixed (idx);
-            if (tmp) to.addClause({tmp < 0 ? -idx : idx});
-        }
-        for (const auto & c : solver->internal->clauses) {
-            if (!c->garbage) {
-                std::vector<int> cl;
-                for (const auto & lit : *c) {
-                    cl.push_back(lit);
-                }
-                to.addClause(cl);
-            }
-        }
-    }
+    Solver_cadical();
+    ~Solver_cadical();
 
     bool getValue(int lit) {
         return solver->val(lit) > 0;
