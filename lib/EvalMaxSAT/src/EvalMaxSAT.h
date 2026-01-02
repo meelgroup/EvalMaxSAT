@@ -18,9 +18,6 @@
 #include "mcqd.h"
 
 
-using namespace MaLib;
-
-
 template<class SAT_SOLVER=Solver_cadical>
 class LocalOptimizer2 {
     SAT_SOLVER *solver;
@@ -53,7 +50,7 @@ public:
 
     t_weight optimize(std::vector<bool> & solution, double timeout_sec)  {
         auto timeout = MaLib::TimeOut(timeout_sec);
-        MonPrint("c optimize for ", timeout_sec, " sec");
+        MaLib::MonPrint("c optimize for ", timeout_sec, " sec");
 
         std::vector< std::tuple<t_weight, int> > softVarFalsified;
         std::vector< int > assumSatisfied;
@@ -128,7 +125,7 @@ class EvalMaxSAT {
 
         std::deque< std::tuple< std::vector<int>, t_weight> > _cardToAdd;   // cardinality to add
         std::vector<int> _litToRelax; // Lit to relax
-        
+
         bool start_solve = false;
         struct ManageStartVariable {
             bool &start_solve;
@@ -158,7 +155,7 @@ private:
         double _base = 400;
         double _minimalRefTime = 5;
         double _maximalRefTime = 5*60;
-        TimeOut totalSolveTimeout = TimeOut(0.9 * 3600 );
+        MaLib::TimeOut totalSolveTimeout = MaLib::TimeOut(0.9 * 3600 );
 
         bool _delayStrategy = true;
         bool _multiSolveStrategy = true;
@@ -199,7 +196,7 @@ public:
             _base = (-initialCoef / ( coefOnRefTime * W( (-initialCoef * std::exp(-initialCoef/coefOnRefTime)) / coefOnRefTime ) ));
         }
         void setTargetComputationTime(double targetComputationTime) {
-            totalSolveTimeout = TimeOut( targetComputationTime * 0.9 );
+            totalSolveTimeout = MaLib::TimeOut( targetComputationTime * 0.9 );
         }
         void setBoundRefTime(double minimalRefTime, double maximalRefTime) {
             _minimalRefTime = minimalRefTime;
@@ -361,9 +358,9 @@ public:
     }
 
     bool solve() {
-        
+
         ManageStartVariable manage(start_solve);
-    
+
         if(solutionCost != std::numeric_limits<t_weight>::max()) {
             solutionCost = std::numeric_limits<t_weight>::max();
         }
@@ -387,12 +384,12 @@ public:
 
         totalSolveTimeout.restart();
 
-        MonPrint("c initial cost = ", cost);
+        MaLib::MonPrint("c initial cost = ", cost);
         std::set<int> assum;
         std::set<int> lastSatAssum;
 
-        Chrono chronoLastSolve;
-        Chrono chronoLastOptimize;
+        MaLib::Chrono chronoLastSolve;
+        MaLib::Chrono chronoLastOptimize;
 
         adapt_am1_exact();
         adapt_am1_FastHeuristicV7();
@@ -407,7 +404,7 @@ public:
                 solution = solver->getSolution();
                 return true;
             }
-            
+
             return false;
         }
 
@@ -449,7 +446,7 @@ public:
 
         int resultLastSolve;
         for(;;) {
-            MonPrint("Full SAT...");
+            MaLib::MonPrint("Full SAT...");
             assert( _cardToAdd.size() == 0 );
             assert( _litToRelax.size() == 0 );
 
@@ -464,7 +461,7 @@ public:
 
                 //Chrono2 log("solve ");
                 resultLastSolve = solver->solve(assum);
-                MonPrint("resultLastSolve = ", resultLastSolve);
+                MaLib::MonPrint("resultLastSolve = ", resultLastSolve);
                 if(resultLastSolve == 1) {
                     lastSatAssum = assum;
                 }
@@ -486,10 +483,10 @@ public:
                         double maxLastSolveOr1 = std::min<double>(_minimalRefTime + chronoLastSolve.tacSec(), _maximalRefTime);
 
                         auto conflict = solver->getConflict(assum);
-                        MonPrint("conflict size = ", conflict.size(), " trouvé en ", chronoLastSolve.tacSec(), "sec, donc maxLastSolveOr1 = ", maxLastSolveOr1);
+                        MaLib::MonPrint("conflict size = ", conflict.size(), " trouvé en ", chronoLastSolve.tacSec(), "sec, donc maxLastSolveOr1 = ", maxLastSolveOr1);
 
                         if(conflict.size() == 0) {
-                            MonPrint("Fin par coupure !");
+                            MaLib::MonPrint("Fin par coupure !");
                             assert(solver->solve() == 0);
                             return solutionCost != std::numeric_limits<t_weight>::max();
                         }
@@ -499,7 +496,7 @@ public:
                         unsigned int lastImprove = 0;
                         double bestP = std::numeric_limits<double>::max();
                         if(_multiSolveStrategy && (conflict.size() > 3)) {
-                            Chrono C;
+                            MaLib::Chrono C;
                             while( ( nbSolve < 3*lastImprove ) || (nbSolve < 20) || ( (C.tacSec() < 0.1*maxLastSolveOr1*getTimeRefCoef()) && (nbSolve < 1000) ) ) {
                                 nbSolve++;
 
@@ -509,7 +506,7 @@ public:
                                 if(p<bestP) {
                                     bestP = p;
                                     conflict = tmp;
-                                    MonPrint("Improve conflict at the ", nbSolve, "th solve = ", conflict.size(),  " (p = ", p , ")");
+                                    MaLib::MonPrint("Improve conflict at the ", nbSolve, "th solve = ", conflict.size(),  " (p = ", p , ")");
                                     if(conflict.size() <= 2) {
                                         break;
                                     }
@@ -517,7 +514,7 @@ public:
                                 }
 
                                 if(C.tacSec() >= maxLastSolveOr1*getTimeRefCoef() ) {
-                                    MonPrint("Stop second solve after ", nbSolve, "th itteration. (nb=",conflict.size(),"). (", C.tacSec(), " > ", maxLastSolveOr1, " * ", getTimeRefCoef(), ")");
+                                    MaLib::MonPrint("Stop second solve after ", nbSolve, "th itteration. (nb=",conflict.size(),"). (", C.tacSec(), " > ", maxLastSolveOr1, " * ", getTimeRefCoef(), ")");
                                     break;
                                 }
 
@@ -525,11 +522,11 @@ public:
                                 MaLib::MonRand::shuffle(vAssum);
                                 auto res = solver->solveWithTimeout(vAssum, maxLastSolveOr1 * getTimeRefCoef() - C.tacSec()  );
                                 if(res==-1) {
-                                    MonPrint("Stop second solve because solveWithTimeout. (nb=",conflict.size(),").");
+                                    MaLib::MonPrint("Stop second solve because solveWithTimeout. (nb=",conflict.size(),").");
                                     break;
                                 }
                             }
-                            MonPrint("Stop second solve after ", nbSolve, " itteration in ", C.tacSec(), " sec. (nb=",conflict.size(),").");
+                            MaLib::MonPrint("Stop second solve after ", nbSolve, " itteration in ", C.tacSec(), " sec. (nb=",conflict.size(),").");
                         }
 
                         // 2. minimize core
@@ -571,15 +568,15 @@ public:
                             l *= -1;
                         }
                         _cardToAdd.push_back( {conflict, minWeight} );
-                        MonPrint("cost = ", cost, " + ", minWeight);
+                        MaLib::MonPrint("cost = ", cost, " + ", minWeight);
                         cost += minWeight;
                         if(cost == solutionCost) {
-                            MonPrint("c UB == LB");
+                            MaLib::MonPrint("c UB == LB");
                             return true;
                         }
-                        MonPrint(_mapWeight2Assum.rbegin()->first, " >= ", solutionCost, " - ", cost, " (", solutionCost - cost, ") ?");
+                        MaLib::MonPrint(_mapWeight2Assum.rbegin()->first, " >= ", solutionCost, " - ", cost, " (", solutionCost - cost, ") ?");
                         if( _mapWeight2Assum.rbegin()->first >= solutionCost - cost) {
-                            MonPrint("c Déchanchement de Haden !");
+                            MaLib::MonPrint("c Déchanchement de Haden !");
                             if(harden(assum)) {
                                 assert(_mapWeight2Assum.size());
                                 if(adapt_am1_VeryFastHeuristic()) {
@@ -654,7 +651,7 @@ public:
                         break;
                     }
 
-                    MonPrint("Limited SAT...");
+                    MaLib::MonPrint("Limited SAT...");
 
                     chronoLastSolve.tic();
                     {
@@ -667,7 +664,7 @@ public:
                         //resultLastSolve = solver->solve(assum);
                         //resultLastSolve = solver->solveWithTimeout(assum, 60);
 
-                        MonPrint("resultLastSolve = ", resultLastSolve);
+                        MaLib::MonPrint("resultLastSolve = ", resultLastSolve);
 
                         if(resultLastSolve == 1) {
                             lastSatAssum = assum;
@@ -748,14 +745,14 @@ public:
             }
         }
 
-        MonPrint("c NUMBER HARDEN : ", nbHarden);
+        MaLib::MonPrint("c NUMBER HARDEN : ", nbHarden);
 
         return nbHarden;
     }
 
 
     double oneMinimize(std::vector<int>& conflict, double referenceTimeSec, unsigned int B=10, bool sort=true) {
-        Chrono C;
+        MaLib::Chrono C;
         double minimize=0;
         double noMinimize=0;
         unsigned int nbRemoved=0;
@@ -789,7 +786,7 @@ public:
             }
 
             if((C.tacSec() > referenceTimeSec*getTimeRefCoef())) {
-                MonPrint("\t\tbreak minimize");
+                MaLib::MonPrint("\t\tbreak minimize");
                 return conflict.size() / (double)_poids[ conflict.back() ];
             }
         }
@@ -837,7 +834,7 @@ public:
         }
 
         bool adapt_am1_exact() {
-            Chrono chrono;
+            MaLib::Chrono chrono;
             unsigned int nbCliqueFound=0;
             std::vector<int> assumption;
 
@@ -850,11 +847,11 @@ public:
             }
 
             if(assumption.size() > 30000) { // hyper paramétre
-                MonPrint("skip");
+                MaLib::MonPrint("skip");
                 return false;
             }
 
-            MonPrint("Create graph for searching clique...");
+            MaLib::MonPrint("Create graph for searching clique...");
             unsigned int size = assumption.size();
             bool **conn = new bool*[size];
             for(unsigned int i=0; i<size; i++) {
@@ -863,7 +860,7 @@ public:
                     conn[i][x] = false;
             }
 
-            MonPrint("Create link in graph...");
+            MaLib::MonPrint("Create link in graph...");
             for(unsigned int i=0; i<size; ) {
                 int lit1 = assumption[i];
 
@@ -920,7 +917,7 @@ public:
                     delete [] conn;
                     delete [] qmax;
 
-                    MonPrint(nbCliqueFound, " cliques found in ", (chrono.tacSec()), "sec.");
+                    MaLib::MonPrint(nbCliqueFound, " cliques found in ", (chrono.tacSec()), "sec.");
                     return true;
                 }
                 nbCliqueFound++;
@@ -1014,7 +1011,7 @@ public:
                         i++;
                     }
                 }
-                MonPrint("AM1: cost = ", cost, " + ", w * (t_weight)(saveClause.size()-1));
+                MaLib::MonPrint("AM1: cost = ", cost, " + ", w * (t_weight)(saveClause.size()-1));
                 cost += w * (t_weight)(saveClause.size()-1);
 
                 assert(saveClause.size() > 1);
@@ -1085,9 +1082,9 @@ public:
         }
 
         unsigned int adapt_am1_FastHeuristicV7() {
-            MonPrint("adapt_am1_FastHeuristic : (_weight.size() = ", _poids.size(), " )");
+            MaLib::MonPrint("adapt_am1_FastHeuristic : (_weight.size() = ", _poids.size(), " )");
 
-            Chrono chrono;
+            MaLib::Chrono chrono;
             std::vector<int> prop;
             unsigned int nbCliqueFound=0;
 
@@ -1244,7 +1241,7 @@ private:
                auto it2 =it;
                it2--;
                if(it2 == _mapWeight2Assum.end()) {
-                   MonPrint("minWeightToConsider == ", 1);
+                   MaLib::MonPrint("minWeightToConsider == ", 1);
                    return 1;
                }
 
@@ -1256,7 +1253,7 @@ private:
                */
 
                if(it2->first < previousWeight * 0.5) {  // hyper paramétre
-                   MonPrint("minWeightToConsider = ", it->first);
+                   MaLib::MonPrint("minWeightToConsider = ", it->first);
                    return it->first;
                }
 
