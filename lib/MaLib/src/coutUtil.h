@@ -116,7 +116,7 @@ namespace {
 template <class... Args>
 std::ostream& operator<< (std::ostream &output, const std::tuple<Args...> &t) {
     output << "<";
-    print_tuple(output, t, int_<sizeof...(Args)>()); 
+    print_tuple(output, t, int_<sizeof...(Args)>());
     output << ">";
     return output;
 }
@@ -163,7 +163,7 @@ std::string toString(const T&... args) {
 }
 
 namespace {
-#ifdef NDEBUG
+#ifndef VERBOSE_DEBUG
     //MaLib::Chrono MonPrint_Chrono;
 #else
     MaLib::Chrono MonPrint_Chrono;
@@ -171,7 +171,7 @@ namespace {
 }
 template<typename ...T>
 void MonPrint(const T&... args) {
-#ifdef NDEBUG
+#ifndef VERBOSE_DEBUG
     //std::cout << "c " << MonPrint_Chrono.tacSec() << ": " << toString(args...) << std::endl;
 #else
     std::cout << "c " << (int)(MonPrint_Chrono.tacSec()) << ": " << toString(args...) << std::endl;

@@ -22,7 +22,7 @@ file(
 )
 
 add_library (
-    ${projectName} STATIC
+    ${projectName}
     ${source_files}
 )
 

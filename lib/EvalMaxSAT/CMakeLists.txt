@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 include_directories(${projectName} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 file(GLOB_RECURSE source_files src/*)
 
-add_library(${projectName} STATIC ${source_files})
+add_library(${projectName} ${source_files})
 target_link_libraries(${projectName} PRIVATE MaLib evalmax_cadical)
 
 install(TARGETS ${projectName}
