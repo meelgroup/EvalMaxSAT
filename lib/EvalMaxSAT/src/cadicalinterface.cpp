@@ -1,5 +1,5 @@
 #include "cadicalinterface.h"
-#include "../../cadical/src/cadical.hpp"
+#include "../../evalmax_cadical/src/cadical.hpp"
 
 MySolver::MySolver() {
     solver = new EvalMax_CaDiCaL::Solver();

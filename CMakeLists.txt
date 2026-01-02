@@ -26,7 +26,7 @@ endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 add_subdirectory(lib/MaLib)
-add_subdirectory(lib/cadical)
+add_subdirectory(lib/evalmax_cadical)
 add_subdirectory(lib/EvalMaxSAT)
 
 # add_subdirectory(main)
