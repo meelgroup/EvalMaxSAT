@@ -17,7 +17,7 @@ extern "C" {
 
 // Signal handlers for printing statistics even if solver is interrupted.
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 static volatile bool caught_signal = false;
 static Handler * signal_handler;

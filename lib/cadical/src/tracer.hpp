@@ -5,7 +5,7 @@
 
 // Proof tracing to a file (actually 'File') in DRAT format.
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 class Tracer : public Observer {
 

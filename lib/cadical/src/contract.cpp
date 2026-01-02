@@ -2,7 +2,7 @@
 
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 void fatal_message_start ();
 

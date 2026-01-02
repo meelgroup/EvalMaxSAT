@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 void External::push_zero_on_extension_stack () {
   extension.push_back (0);

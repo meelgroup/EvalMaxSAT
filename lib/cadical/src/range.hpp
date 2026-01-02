@@ -1,7 +1,7 @@
 #ifndef _range_hpp_INCLUDED
 #define _range_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Clause;
 

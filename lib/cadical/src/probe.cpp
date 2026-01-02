@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 
@@ -629,7 +629,7 @@ bool Internal::probe_round () {
 
 /*------------------------------------------------------------------------*/
 
-void CaDiCaL::Internal::probe (bool update_limits) {
+void EvalMax_CaDiCaL::Internal::probe (bool update_limits) {
 
   if (unsat) return;
   if (level) backtrack ();

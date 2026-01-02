@@ -10,13 +10,13 @@
 
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 using namespace std;
 
 /*------------------------------------------------------------------------*/
 
-// The CaDiCaL code is split into three layers:
+// The EvalMax_CaDiCaL code is split into three layers:
 //
 //   Solver:       facade object providing the actual API of the solver
 //   External:     communication layer between 'Solver' and 'Internal'
@@ -228,7 +228,7 @@ struct External {
 
   /*----------------------------------------------------------------------*/
 
-  // According to the CaDiCaL API contract (as well as IPASIR) we have to
+  // According to the EvalMax_CaDiCaL API contract (as well as IPASIR) we have to
   // forget about the previous assumptions after a 'solve' call.  This
   // should however be delayed until we transition out of an 'UNSATISFIED'
   // state, i.e., after no more 'failed' calls are expected.  Note that
@@ -302,7 +302,7 @@ struct External {
   /*----------------------------------------------------------------------*/
 
   int lookahead();
-  CaDiCaL::CubesWithStatus generate_cubes(int, int);
+  EvalMax_CaDiCaL::CubesWithStatus generate_cubes(int, int);
 
   int fixed (int elit) const;   // Implemented in 'internal.hpp'.
 

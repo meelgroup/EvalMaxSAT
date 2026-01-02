@@ -1,7 +1,7 @@
 #include "internal.hpp"
 #include "reap.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
   void Internal::reset_shrinkable()
   {
@@ -443,4 +443,4 @@ namespace CaDiCaL {
     STOP(minimize);
   }
 
-} // namespace CaDiCaL
+} // namespace EvalMax_CaDiCaL

@@ -3,7 +3,7 @@
 
 #include "ema.hpp"              // alphabetically after 'averages.hpp'
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Averages {
 

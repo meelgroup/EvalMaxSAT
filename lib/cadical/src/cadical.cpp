@@ -7,9 +7,9 @@
 
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
-// A wrapper app which makes up the CaDiCaL stand alone solver.  It in
+// A wrapper app which makes up the EvalMax_CaDiCaL stand alone solver.  It in
 // essence only consists of the 'App::main' function.  So this class
 // contains code, which is not required if only the library interface in
 // the class 'Solver' is used (defined in 'cadical.hpp').  It further uses
@@ -317,7 +317,7 @@ int App::main (int argc, char ** argv) {
       print_usage (true);
       return 0;
     } else if (!strcmp (arg, "--version")) {
-      printf ("%s\n", CaDiCaL::version ());
+      printf ("%s\n", EvalMax_CaDiCaL::version ());
       return 0;
     } else if (!strcmp (arg, "--build")) {
       tout.disable ();
@@ -554,12 +554,12 @@ int App::main (int argc, char ** argv) {
 #ifndef QUIET
   if (!get ("quiet")) {
     solver->section ("banner");
-    solver->message ("%sCaDiCaL Radically Simplified CDCL SAT Solver%s",
+    solver->message ("%sEvalMax_CaDiCaL Radically Simplified CDCL SAT Solver%s",
       tout.bright_magenta_code (), tout.normal_code ());
     solver->message ("%s%s%s",
       tout.bright_magenta_code (), copyright (), tout.normal_code ());
     solver->message ();
-    CaDiCaL::Solver::build (stdout, "c ");
+    EvalMax_CaDiCaL::Solver::build (stdout, "c ");
   }
 #endif
   if (preprocessing > 0 || localsearch > 0 ||
@@ -862,7 +862,7 @@ void App::init () {
   // library usage it should remain 'false'.  See the explanation in
   // 'options.hpp' related to 'reportdefault' for details.
 
-  CaDiCaL::Options::reportdefault = 1;
+  EvalMax_CaDiCaL::Options::reportdefault = 1;
   solver = new Solver ();
   Signal::set (this);
 }
@@ -918,7 +918,7 @@ void App::catch_alarm () {
 #endif
 }
 
-} // end of 'namespace CaDiCaL'
+} // end of 'namespace EvalMax_CaDiCaL'
 
 /*------------------------------------------------------------------------*/
 

@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Slightly different than 'bump_variable' since the variable is not
 // enqueued at all.

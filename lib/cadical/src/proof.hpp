@@ -1,7 +1,7 @@
 #ifndef _proof_h_INCLUDED
 #define _proof_h_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 

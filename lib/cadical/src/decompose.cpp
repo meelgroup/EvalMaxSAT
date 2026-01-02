@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // This implements Tarjan's algorithm for decomposing the binary implication
 // graph intro strongly connected components (SCCs).  Literals in one SCC

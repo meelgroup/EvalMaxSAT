@@ -1,7 +1,7 @@
 #ifndef _arena_hpp_INCLUDED
 #define _arena_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // This memory allocation arena provides fixed size pre-allocated memory for
 // the moving garbage collector 'copy_non_garbage_clauses' in 'collect.cpp'
@@ -18,7 +18,7 @@ namespace CaDiCaL {
 // pointers.  This would restrict the maximum number of clauses and thus is
 // a restriction we do not want to use anymore.
 
-// New learned clauses are allocated in CaDiCaL outside of this arena and
+// New learned clauses are allocated in EvalMax_CaDiCaL outside of this arena and
 // moved to the arena during garbage collection.  The additional 'to' space
 // required for such a moving garbage collector is only allocated for those
 // clauses surviving garbage collection, which usually needs much less

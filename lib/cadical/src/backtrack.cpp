@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // The global assignment stack can only be (partially) reset through
 // 'backtrack' which is the only function using 'unassign' (inlined and thus

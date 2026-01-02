@@ -1,7 +1,7 @@
 #ifndef _score_hpp_INCLUDED
 #define _score_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct score_smaller {
   Internal * internal;

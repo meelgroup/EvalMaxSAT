@@ -3,7 +3,7 @@
 
 #include "util.hpp"     // Alphabetically after 'heap.hpp'.
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 using namespace std;
 

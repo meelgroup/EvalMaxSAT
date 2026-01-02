@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct literal_occ {
   int lit;
@@ -502,4 +502,4 @@ CubesWithStatus Internal::generate_cubes(int depth, int min_depth) {
   return rcubes;
 }
 
-} // namespace CaDiCaL
+} // namespace EvalMax_CaDiCaL

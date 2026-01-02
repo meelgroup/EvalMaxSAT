@@ -3,7 +3,7 @@
 
 #include "heap.hpp"     // Alphabetically after 'block.hpp'.
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Internal;
 

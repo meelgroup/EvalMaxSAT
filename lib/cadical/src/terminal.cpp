@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 Terminal::Terminal (FILE * f) : file (f), reset_on_exit (false) {
   assert (file);

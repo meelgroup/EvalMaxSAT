@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // This initializes variables on the binary 'scores' heap also with
 // smallest variable index first (thus picked first) and larger indices at

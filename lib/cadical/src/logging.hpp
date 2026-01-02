@@ -7,7 +7,7 @@
 
 #include <vector>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // For debugging purposes and to help understanding what the solver is doing
 // there is a logging facility which is compiled in by './configure -l'.  It

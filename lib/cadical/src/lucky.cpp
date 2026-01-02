@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // It turns out that even in the competition there are formulas which are
 // easy to satisfy by either setting all variables to the same truth value

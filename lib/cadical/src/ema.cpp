@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Updating an exponential moving average is placed here since we want to
 // log both updates and phases of initialization, thus need 'LOG'.

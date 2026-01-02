@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 External::External (Internal * i)
 :
@@ -306,7 +306,7 @@ int External::lookahead () {
   return elit;
 }
 
-CaDiCaL::CubesWithStatus External::generate_cubes (int depth, int min_depth = 0) {
+EvalMax_CaDiCaL::CubesWithStatus External::generate_cubes (int depth, int min_depth = 0) {
   reset_extended ();
   update_molten_literals ();
   reset_limits ();

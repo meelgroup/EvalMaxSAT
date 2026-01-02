@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Functions for learned clause minimization. We only have the recursive
 // version, which actually really is implemented recursively.  We also

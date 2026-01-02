@@ -1,7 +1,7 @@
 #ifndef _reluctant_hpp_INCLUDED
 #define _reluctant_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // This is Donald Knuth's version of the Luby restart sequence which he
 // called 'reluctant doubling'.  His bit-twiddling formulation in line (DK)

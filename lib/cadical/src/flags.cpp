@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 void Internal::mark_fixed (int lit) {
   Flags & f = flags (lit);

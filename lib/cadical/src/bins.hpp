@@ -3,7 +3,7 @@
 
 #include "util.hpp"     // Alphabetically after 'bins'.
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 using namespace std;
 

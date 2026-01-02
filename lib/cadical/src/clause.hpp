@@ -1,7 +1,7 @@
 #ifndef _clause_hpp_INCLUDED
 #define _clause_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 

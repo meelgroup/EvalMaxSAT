@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 void Internal::copy_phases (vector<signed char> & dst) {
   START (copy);

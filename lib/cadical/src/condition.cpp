@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 
@@ -9,7 +9,7 @@ namespace CaDiCaL {
 // extended version, which in particular describes the algorithm implemented
 // below is in our invited ATVA'19 paper [KieslHeuleBiere-ATVA'19].  This
 // accordingly needs witnesses consisting potentially of more than one
-// literal.  It is the first technique implemented in CaDiCaL with this
+// literal.  It is the first technique implemented in EvalMax_CaDiCaL with this
 // feature (PR clause elimination thus should work in principle too).
 
 // Basically globally blocked clauses are like set blocked clauses, except

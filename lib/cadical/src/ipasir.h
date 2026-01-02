@@ -10,7 +10,7 @@ extern "C" {
 // Here are the declarations for the actual IPASIR functions, which is the
 // generic incremental reentrant SAT solver API used for instance in the SAT
 // competition.  The other 'C' API in 'ccadical.h' is (more) type safe and
-// has additional functions only supported by the CaDiCaL library.  Please
+// has additional functions only supported by the EvalMax_CaDiCaL library.  Please
 // also refer to our SAT Race 2015 article in the Journal of AI from 2016.
 
 const char * ipasir_signature (void);

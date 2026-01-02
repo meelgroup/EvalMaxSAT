@@ -6,11 +6,11 @@
 #include <vector>
 #include <set>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*========================================================================*/
 
-// This provides the actual API of the CaDiCaL solver, which is implemented
+// This provides the actual API of the EvalMax_CaDiCaL solver, which is implemented
 // in the class 'Solver' below.  Beside its constructor and destructor most
 // important is the IPASIR part which you can find between 'BEGIN IPASIR'
 // and 'END IPASIR' comments below.  The following '[Example]' below might
@@ -26,7 +26,7 @@ namespace CaDiCaL {
 //
 // Consider the following code (from 'test/api/example.cpp') of API usage:
 //
-//   CaDiCaL::Solver * solver = new CaDiCaL::Solver;
+//   EvalMax_CaDiCaL::Solver * solver = new EvalMax_CaDiCaL::Solver;
 //
 //   // ------------------------------------------------------------------
 //   // Encode Problem and check without assumptions.
@@ -740,13 +740,13 @@ private:
 
   // This approach has the benefit of decoupling this header file from all
   // internal data structures, which is particularly useful if the rest of
-  // the source is not available. For instance if only a CaDiCaL library is
+  // the source is not available. For instance if only a EvalMax_CaDiCaL library is
   // installed in a system, then only this header file has to be installed
   // too, and still allows to compile and link against the library.
 
   /*----------------------------------------------------------------------*/
 
-  // More precisely the CaDiCaL code is split into three layers:
+  // More precisely the EvalMax_CaDiCaL code is split into three layers:
   //
   //   Solver:       facade object providing the actual API of the solver
   //   External:     communication layer between 'Solver' and 'Internal'

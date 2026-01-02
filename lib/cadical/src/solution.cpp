@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Sam Buss suggested to debug the case where a solver incorrectly claims
 // the formula to be unsatisfiable by checking every learned clause to be

@@ -4,7 +4,7 @@
 #include <cassert>
 #include <vector>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Factors out common functions for parsing of DIMACS and solution files.
 

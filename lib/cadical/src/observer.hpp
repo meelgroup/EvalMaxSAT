@@ -1,7 +1,7 @@
 #ifndef _observer_hpp_INCLUDED
 #define _observer_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Proof observer class used to act on added, derived or deleted clauses.
 

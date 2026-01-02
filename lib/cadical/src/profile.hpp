@@ -5,7 +5,7 @@
 #ifndef QUIET
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Internal;
 

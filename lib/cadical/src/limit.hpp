@@ -3,7 +3,7 @@
 
 #include <chrono>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Limit {
 

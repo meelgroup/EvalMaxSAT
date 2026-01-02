@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Implement transitive reduction in the binary implication graph.  This is
 // important for hyper binary resolution, which has the risk to produce too

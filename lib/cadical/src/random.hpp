@@ -2,7 +2,7 @@
 
 // Random number generator.
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 class Random {
 

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Full occurrence lists used in a one-watch scheme for all clauses in
 // subsumption checking and for irredundant clauses in variable elimination.

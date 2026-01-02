@@ -1,7 +1,7 @@
 #ifndef _vivify_hpp_INCLUDED
 #define _vivify_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Clause;
 

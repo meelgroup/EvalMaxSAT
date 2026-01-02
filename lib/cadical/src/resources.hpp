@@ -1,7 +1,7 @@
 #ifndef _resources_hpp_INCLUDED
 #define _resources_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 double absolute_real_time ();
 double absolute_process_time ();

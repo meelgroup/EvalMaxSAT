@@ -19,7 +19,7 @@
 #endif
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Wraps a 'C' file 'FILE' with name and supports zipped reading and writing
 // through 'popen' using external helper tools.  Reading has line numbers.

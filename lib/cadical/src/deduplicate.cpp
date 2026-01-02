@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Equivalent literal substitution in 'decompose' and shrinking in 'subsume'
 // or 'vivify' might produce duplicated binary clauses.  They can not be

@@ -3,7 +3,7 @@
 
 #include <climits>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // For each new decision we increase the decision level and push a 'Level'
 // on the 'control' stack.  The information gathered here is used in

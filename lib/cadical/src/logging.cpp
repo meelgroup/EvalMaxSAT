@@ -2,7 +2,7 @@
 
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 void Logger::print_log_prefix (Internal * internal) {
   internal->print_prefix ();

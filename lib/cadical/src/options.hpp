@@ -210,7 +210,7 @@ OPTION( walkreleff,       20,  1,1e5,1,0,1, "relative efficiency per mille") \
 
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Internal;
 

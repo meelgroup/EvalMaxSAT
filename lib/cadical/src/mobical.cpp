@@ -4,9 +4,9 @@
 /* Copyright (c) 2020-2021 Nils Froleyks, Johannes Kepler University Linz */
 /*------------------------------------------------------------------------*/
 
-// Model Based Tester for the CaDiCaL SAT Solver Library.
+// Model Based Tester for the EvalMax_CaDiCaL SAT Solver Library.
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 static const char * USAGE =
 "usage: mobical [ <option> ... ] [ <mode> ]\n"
@@ -14,7 +14,7 @@ static const char * USAGE =
 "where '<option>' can be one of the following:\n"
 "\n"
 "  --help    | -h    print this command line option summary and exit\n"
-"  --version         print CaDiCaL's three character version and exit\n"
+"  --version         print EvalMax_CaDiCaL's three character version and exit\n"
 "  --build           print build configuration\n"
 "\n"
 "  -v                increase verbosity\n"
@@ -102,7 +102,7 @@ static const char * USAGE =
 "'valgrind' or recompilation with memory checking '-fsanitize=address'.\n"
 ;
 
-} // end of 'namespace CaDiCaL'.
+} // end of 'namespace EvalMax_CaDiCaL'.
 
 /*------------------------------------------------------------------------*/
 
@@ -126,7 +126,7 @@ extern "C" {
 }
 
 /*------------------------------------------------------------------------*/
-namespace CaDiCaL {     // All except 'main' below.
+namespace EvalMax_CaDiCaL {     // All except 'main' below.
 /*------------------------------------------------------------------------*/
 
 using namespace std;
@@ -314,7 +314,7 @@ public:
 
 /*------------------------------------------------------------------------*/
 
-CaDiCaL::Mobical mobical;
+EvalMax_CaDiCaL::Mobical mobical;
 
 /*------------------------------------------------------------------------*/
 
@@ -2823,7 +2823,7 @@ int Mobical::main (int argc, char ** argv) {
 
   prefix ();
   terminal.magenta (1);
-  fputs ("Model Based Tester for the CaDiCaL SAT Solver Library\n", stderr);
+  fputs ("Model Based Tester for the EvalMax_CaDiCaL SAT Solver Library\n", stderr);
   terminal.normal ();
   prefix ();
   terminal.magenta (1);
@@ -3115,6 +3115,6 @@ int Mobical::main (int argc, char ** argv) {
 }
 
 /*------------------------------------------------------------------------*/
-} // End of 'namespace CaDiCaL'.
+} // End of 'namespace EvalMax_CaDiCaL'.
 /*------------------------------------------------------------------------*/
 

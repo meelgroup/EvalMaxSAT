@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // This function determines the next decision variable on the queue, without
 // actually removing it from the decision queue, e.g., calling it multiple

@@ -9,44 +9,44 @@ extern "C" {
 
 #include <stdint.h>
 
-// C wrapper for CaDiCaL's C++ API following IPASIR.
+// C wrapper for EvalMax_CaDiCaL's C++ API following IPASIR.
 
-typedef struct CCaDiCaL CCaDiCaL;
+typedef struct CEvalMax_CaDiCaL CEvalMax_CaDiCaL;
 
 const char * ccadical_signature (void);
-CCaDiCaL * ccadical_init (void);
-void ccadical_release (CCaDiCaL *);
+CEvalMax_CaDiCaL * ccadical_init (void);
+void ccadical_release (CEvalMax_CaDiCaL *);
 
-void ccadical_add (CCaDiCaL *, int lit);
-void ccadical_assume (CCaDiCaL *, int lit);
-int ccadical_solve (CCaDiCaL *);
-int ccadical_val (CCaDiCaL *, int lit);
-int ccadical_failed (CCaDiCaL *, int lit);
+void ccadical_add (CEvalMax_CaDiCaL *, int lit);
+void ccadical_assume (CEvalMax_CaDiCaL *, int lit);
+int ccadical_solve (CEvalMax_CaDiCaL *);
+int ccadical_val (CEvalMax_CaDiCaL *, int lit);
+int ccadical_failed (CEvalMax_CaDiCaL *, int lit);
 
-void ccadical_set_terminate (CCaDiCaL *,
+void ccadical_set_terminate (CEvalMax_CaDiCaL *,
   void * state, int (*terminate)(void * state));
 
-void ccadical_set_learn (CCaDiCaL *,
+void ccadical_set_learn (CEvalMax_CaDiCaL *,
   void * state, int max_length, void (*learn)(void * state, int * clause));
 
 /*------------------------------------------------------------------------*/
 
 // Non-IPASIR conformant 'C' functions.
 
-void ccadical_constrain (CCaDiCaL *, int lit);
-int ccadical_constraint_failed (CCaDiCaL *);
-void ccadical_set_option (CCaDiCaL *, const char * name, int val);
-void ccadical_limit (CCaDiCaL *, const char * name, int limit);
-int ccadical_get_option (CCaDiCaL *, const char * name);
-void ccadical_print_statistics (CCaDiCaL *);
-int64_t ccadical_active (CCaDiCaL *);
-int64_t ccadical_irredundant (CCaDiCaL *);
-int ccadical_fixed (CCaDiCaL *, int lit);
-void ccadical_terminate (CCaDiCaL *);
-void ccadical_freeze (CCaDiCaL *, int lit);
-int ccadical_frozen (CCaDiCaL *, int lit);
-void ccadical_melt (CCaDiCaL *, int lit);
-int ccadical_simplify (CCaDiCaL *);
+void ccadical_constrain (CEvalMax_CaDiCaL *, int lit);
+int ccadical_constraint_failed (CEvalMax_CaDiCaL *);
+void ccadical_set_option (CEvalMax_CaDiCaL *, const char * name, int val);
+void ccadical_limit (CEvalMax_CaDiCaL *, const char * name, int limit);
+int ccadical_get_option (CEvalMax_CaDiCaL *, const char * name);
+void ccadical_print_statistics (CEvalMax_CaDiCaL *);
+int64_t ccadical_active (CEvalMax_CaDiCaL *);
+int64_t ccadical_irredundant (CEvalMax_CaDiCaL *);
+int ccadical_fixed (CEvalMax_CaDiCaL *, int lit);
+void ccadical_terminate (CEvalMax_CaDiCaL *);
+void ccadical_freeze (CEvalMax_CaDiCaL *, int lit);
+int ccadical_frozen (CEvalMax_CaDiCaL *, int lit);
+void ccadical_melt (CEvalMax_CaDiCaL *, int lit);
+int ccadical_simplify (CEvalMax_CaDiCaL *);
 
 /*------------------------------------------------------------------------*/
 

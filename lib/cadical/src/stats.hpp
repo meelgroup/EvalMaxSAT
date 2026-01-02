@@ -3,7 +3,7 @@
 
 #include <cstdlib>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Internal;
 

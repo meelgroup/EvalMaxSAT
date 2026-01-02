@@ -2,7 +2,7 @@
 
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 
@@ -922,7 +922,7 @@ void Solver::build (FILE * file, const char * prefix) {
   else if (file == stderr) terminal = &terr;
   else terminal = 0;
 
-  const char * v = CaDiCaL::version ();
+  const char * v = EvalMax_CaDiCaL::version ();
   const char * i = identifier ();
   const char * c = compiler ();
   const char * b = date ();
@@ -966,9 +966,9 @@ void Solver::build (FILE * file, const char * prefix) {
   fflush (file);
 }
 
-const char * Solver::version () { return CaDiCaL::version (); }
+const char * Solver::version () { return EvalMax_CaDiCaL::version (); }
 
-const char * Solver::signature () { return CaDiCaL::signature (); }
+const char * Solver::signature () { return EvalMax_CaDiCaL::signature (); }
 
 void Solver::options () {
   REQUIRE_VALID_STATE ();

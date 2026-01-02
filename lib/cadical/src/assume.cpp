@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Failed literal handling as pioneered by MiniSAT.  This first function
 // adds an assumption literal onto the assumption stack.

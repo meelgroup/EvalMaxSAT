@@ -1,7 +1,7 @@
 #ifndef _phases_hpp_INCLUDED
 #define _phases_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Phases {
 

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 using namespace std;
 

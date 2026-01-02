@@ -1,7 +1,7 @@
 #include "internal.hpp"
 #include <chrono>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 

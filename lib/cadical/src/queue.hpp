@@ -1,7 +1,7 @@
 #ifndef _queue_hpp_INCLUDED
 #define _queue_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Links for double linked decision queue.
 

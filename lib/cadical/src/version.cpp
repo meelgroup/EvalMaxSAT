@@ -86,7 +86,7 @@ static const char * COPYRIGHT =
 
 #include "version.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 const char * version () { return "VERSION"; }
 const char * copyright () { return COPYRIGHT; }

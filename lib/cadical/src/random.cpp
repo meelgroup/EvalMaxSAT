@@ -44,7 +44,7 @@ do { \
 // does not have any effect.  TODO: add a similar machine identity hashing
 // function for other operating systems (Windows and macOS).
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 static uint64_t hash_machine_identifier () {
   FILE * file = fopen ("/var/lib/dbus/machine-id", "r");
@@ -88,7 +88,7 @@ extern "C" {
 
 #endif
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 static uint64_t hash_network_addresses () {
   uint64_t res = 0;
@@ -138,7 +138,7 @@ extern "C" {
 #include <time.h>
 }
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 static uint64_t hash_time () {
   uint64_t res = ::time (0);
@@ -157,7 +157,7 @@ extern "C" {
 #include <unistd.h>
 }
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 static uint64_t hash_process () {
   uint64_t res = getpid ();
@@ -173,7 +173,7 @@ static uint64_t hash_process () {
 
 #include <ctime>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 static uint64_t hash_clock_cycles () {
   uint64_t res = std::clock ();
@@ -185,7 +185,7 @@ static uint64_t hash_clock_cycles () {
 
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 Random::Random () : state (1) {
   add (hash_machine_identifier ());

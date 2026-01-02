@@ -5,13 +5,13 @@
 #include <iterator>
 #include <cstring>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 using namespace std;
 
 // This provides an implementation of a generic radix sort algorithm. The
 // reason for having it is that for certain benchmarks and certain parts of
-// CaDiCaL where sorting is used, the standard sorting algorithm 'sort'
+// EvalMax_CaDiCaL where sorting is used, the standard sorting algorithm 'sort'
 // turned out to be a hot-spot. Up to 30% of the total running time was for
 // instance used for some benchmarks in sorting variables during bumping
 // to make sure to bump them in 'enqueued' order.

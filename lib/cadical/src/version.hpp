@@ -1,4 +1,4 @@
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 const char * version ();
 const char * copyright ();

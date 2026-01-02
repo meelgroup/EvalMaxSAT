@@ -1,7 +1,7 @@
 #ifndef _terminal_hpp_INCLUDED
 #define _terminal_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 class Terminal {
 

@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 void Internal::reset_subsume_bits () {
   LOG ("marking all variables as not subsume");

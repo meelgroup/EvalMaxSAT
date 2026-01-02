@@ -1,7 +1,7 @@
 #ifndef _config_hpp_INCLUDED
 #define _config_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 class Options;
 

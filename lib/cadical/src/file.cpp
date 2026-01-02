@@ -15,7 +15,7 @@ extern "C" {
 
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 
@@ -79,7 +79,7 @@ bool File::writable (const char * path) {
 // These are signatures for supported compressed file types.  In 2018 the
 // SAT Competition was running on StarExec and used internally 'bzip2'
 // compressed files, but gave them uncompressed to the solver using exactly
-// the same path (with '.bz2' suffix).  Then 'CaDiCaL' tried to read that
+// the same path (with '.bz2' suffix).  Then 'EvalMax_CaDiCaL' tried to read that
 // actually uncompressed file through 'bzip2', which of course failed.  Now
 // we double check and fall back to reading the file as is, if the signature
 // does not match after issuing a warning.

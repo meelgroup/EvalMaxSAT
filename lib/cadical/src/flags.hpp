@@ -1,7 +1,7 @@
 #ifndef _flags_hpp_INCLUDED
 #define _flags_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 struct Flags {        // Variable flags.
 

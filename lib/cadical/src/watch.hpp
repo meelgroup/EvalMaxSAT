@@ -4,7 +4,7 @@
 #include <cassert>
 #include <vector>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Watch lists for CDCL search.  The blocking literal (see also comments
 // related to 'propagate') is a must and thus combining that with a 64 bit

@@ -3,7 +3,7 @@
 
 #include <cstdarg>
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // This class provides a 'printf' style formatting utility.
 // Only '%c', '%d', '%s' are supported at this point.

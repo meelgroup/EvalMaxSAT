@@ -2,7 +2,7 @@
 
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // Initialize all profile counters with constant name and profiling level.
 

@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 Arena::Arena (Internal * i) {
   memset (this, 0, sizeof *this);

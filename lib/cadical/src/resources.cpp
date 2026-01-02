@@ -29,7 +29,7 @@ extern "C" {
 #include <string.h>
 }
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 /*------------------------------------------------------------------------*/
 

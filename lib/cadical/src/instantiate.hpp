@@ -1,7 +1,7 @@
 #ifndef _instantiate_hpp_INCLUDED
 #define _instantiate_hpp_INCLUDED
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // We are trying to remove literals in clauses, which occur in few clauses
 // and further restrict this removal to variables for which variable

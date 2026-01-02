@@ -25,7 +25,7 @@ do { \
 
 /*------------------------------------------------------------------------*/
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // It would be much easier to just write 'REQUIRE (this, "not initialized")'
 // which however produces warnings due to the '-Wnonnull' check. Note, that

@@ -1,6 +1,6 @@
 #include "internal.hpp"
 
-namespace CaDiCaL {
+namespace EvalMax_CaDiCaL {
 
 // As observed by Chanseok Oh and implemented in MapleSAT solvers too,
 // various mostly satisfiable instances benefit from long quiet phases
