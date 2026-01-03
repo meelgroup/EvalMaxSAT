@@ -243,7 +243,7 @@ public:
 
         int var = solver->newVar(decisionVar);
 
-        assert(var == _poids.size()-1);
+        assert(var == (int)_poids.size()-1);
 
         return var;
     }
@@ -260,7 +260,7 @@ public:
         _mapWeight2Assum[weight].insert( (((int)value*2) - 1) * ((int)(_poids.size())-1) );
 
         int var = solver->newVar();
-        assert(var == _poids.size()-1);
+        assert(var == (int)_poids.size()-1);
 
         return var;
     }
@@ -558,7 +558,7 @@ public:
                             }
                             assert(_poids[lit] >= 0);
 
-                            if(_poids[lit] < minWeightToConsider) {
+                            if(_poids[lit] < (long long)minWeightToConsider) {
                                 assum.erase(lit);
                             }
                         }
@@ -588,7 +588,7 @@ public:
                             for(auto lit: _litToRelax) {
                                 auto newLit = relax(lit);
                                 if(newLit.has_value()) {
-                                    if( _poids[newLit.value()] >= minWeightToConsider ) {
+                                    if( _poids[newLit.value()] >= (long long)minWeightToConsider ) {
                                         assum.insert(newLit.value());
                                     }
                                 }
@@ -631,7 +631,7 @@ public:
                                     _mapWeight2Assum[ std::get<1>(_cardToAdd.front()) ].insert(newAssumForCard);
                                     _mapAssum2Card[ abs(newAssumForCard) ] = LitCard(card, 1, std::get<1>(_cardToAdd.front()));
 
-                                    if( _poids[newAssumForCard] >= minWeightToConsider ) {
+                                    if( _poids[newAssumForCard] >= (long long)minWeightToConsider ) {
                                         assum.insert(newAssumForCard);
                                     }
                                 }
@@ -675,7 +675,7 @@ public:
                 for(auto lit: _litToRelax) {
                     auto newLit = relax(lit);
                     if(newLit.has_value()) {
-                        if( _poids[newLit.value()] >= minWeightToConsider ) {
+                        if( _poids[newLit.value()] >= (long long)minWeightToConsider ) {
                             assum.insert(newLit.value());
                         }
                     }
@@ -692,7 +692,7 @@ public:
                         _mapWeight2Assum[ std::get<1>(c) ].insert(newAssumForCard);
                         _mapAssum2Card[ abs(newAssumForCard) ] = LitCard(card, 1, std::get<1>(c));
 
-                        if( _poids[newAssumForCard] >= minWeightToConsider ) {
+                        if( _poids[newAssumForCard] >= (long long)minWeightToConsider ) {
                             assum.insert(newAssumForCard);
                         }
                     }
@@ -729,7 +729,7 @@ public:
             auto lits = _mapWeight2Assum.rbegin()->second;
 
             for(auto lit: lits) {
-                assert( _poids[lit] >= maxCostLit );
+                assert( _poids[lit] >= (long long)maxCostLit );
                 addClause({lit});
                 assum.erase(lit);
                 nbHarden++;
@@ -925,7 +925,7 @@ public:
                     //int newI=qmax[0];
                     std::vector<int> clause;
 
-                    for (unsigned int i = 0; i < qsize; i++) {
+                    for (unsigned int i = 0; i < (unsigned int)qsize; i++) {
                         int lit = assumption[qmax[i]];
                         active[qmax[i]] = false;
                         clause.push_back(lit);
@@ -936,7 +936,7 @@ public:
                         }
                     }
                     auto newAssum = processAtMostOne(clause);
-                    assert(qsize >= newAssum.size());
+                    assert(qsize >= (int)newAssum.size());
 
                     for(unsigned int j=0; j<newAssum.size() ; j++) {
                         assumption[ qmax[j] ] = newAssum[j];
@@ -1050,7 +1050,7 @@ public:
             std::vector<int> prop;
             unsigned int nbCliqueFound=0;
 
-            for(int VAR = 1; VAR<_poids.size(); VAR++) {
+            for(int VAR = 1; VAR<(int)_poids.size(); VAR++) {
                 if(_poids[VAR] == 0)
                     continue;
                 assert(_poids[VAR] != 0);
@@ -1087,7 +1087,7 @@ public:
             std::vector<int> prop;
             unsigned int nbCliqueFound=0;
 
-            for(int VAR = 1; VAR<_poids.size(); VAR++) {
+            for(int VAR = 1; VAR<(int)_poids.size(); VAR++) {
                 if(_poids[VAR] == 0)
                     continue;
 
