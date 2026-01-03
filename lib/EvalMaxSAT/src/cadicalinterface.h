@@ -48,7 +48,7 @@ public:
         return nVar;
     }
 
-    int newVar(bool decisionVar=true) {
+    int newVar(bool /*decisionVar*/=true) {
          // decisionVar not implemented in Cadical ?
          return ++nVar;
      }

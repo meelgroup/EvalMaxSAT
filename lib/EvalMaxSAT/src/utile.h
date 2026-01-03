@@ -134,7 +134,7 @@ static void readClause(B& in, std::vector<int>& lits) {
 }
 
 /// POUR DEBUG ////
-static t_weight calculateCost(const std::string & file, std::vector<bool> &result) {
+[[maybe_unused]] static t_weight calculateCost(const std::string & file, std::vector<bool> &result) {
     t_weight cost = 0;
     auto in_ = gzopen(file.c_str(), "rb");
     t_weight weightForHardClause = -1;
@@ -290,7 +290,7 @@ static bool parse(const std::string& filePath, MAXSAT_SOLVER* solveur) {
  }
 
 
-static std::vector<int> readClause(StreamBuffer &in) {
+[[maybe_unused]] static std::vector<int> readClause(StreamBuffer &in) {
     std::vector<int> clause;
 
     for (;;) {

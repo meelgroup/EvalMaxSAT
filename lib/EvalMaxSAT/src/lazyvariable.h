@@ -22,8 +22,8 @@ class LazyVariable {
 public:
 
     // The variable will be created when the first call to get() is made.
-    LazyVariable(T *solver)
-        : solver(solver) {
+    LazyVariable(T *solver_)
+        : solver(solver_) {
     }
 
     // Links the variable to the given one.

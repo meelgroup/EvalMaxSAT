@@ -145,7 +145,7 @@ std::ostream& operator<< (std::ostream &output, const std::map<T1, T2> &s) {
 }
 
 namespace  {
-    void _toString(std::ostringstream &oss){
+    [[maybe_unused]] void _toString(std::ostringstream &/*oss*/){
     }
 
     template<typename T1, typename ...T>
@@ -172,6 +172,7 @@ namespace {
 template<typename ...T>
 void MonPrint(const T&... args) {
 #ifndef VERBOSE_DEBUG
+    (void)(sizeof...(args)); // Suppress unused parameter warning
     //std::cout << "c " << MonPrint_Chrono.tacSec() << ": " << toString(args...) << std::endl;
 #else
     std::cout << "c " << (int)(MonPrint_Chrono.tacSec()) << ": " << toString(args...) << std::endl;

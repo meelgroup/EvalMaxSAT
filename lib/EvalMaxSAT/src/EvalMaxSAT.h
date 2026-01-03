@@ -24,8 +24,8 @@ class LocalOptimizer2 {
     t_weight initialWeight;
 
 public:
-    LocalOptimizer2(SAT_SOLVER *solver, const WeightVector &poids, const t_weight &initialWeight) :
-        solver(solver), poids(poids), initialWeight(initialWeight) {
+    LocalOptimizer2(SAT_SOLVER *solver_, const WeightVector &poids_, const t_weight &initialWeight_) :
+        solver(solver_), poids(poids_), initialWeight(initialWeight_) {
 
     }
 
@@ -110,7 +110,7 @@ class EvalMaxSAT {
             int atMost;
             t_weight initialWeight;
 
-            LitCard(std::shared_ptr<CardIncremental_Lazy<EvalMaxSAT<SAT_SOLVER>>> card, int atMost, t_weight initialWeight) : card(card), atMost(atMost), initialWeight(initialWeight) {
+            LitCard(std::shared_ptr<CardIncremental_Lazy<EvalMaxSAT<SAT_SOLVER>>> card_, int atMost_, t_weight initialWeight_) : card(card_), atMost(atMost_), initialWeight(initialWeight_) {
                 assert( card != nullptr );
                 assert(atMost > 0);
                 assert(initialWeight > 0);
@@ -128,7 +128,7 @@ class EvalMaxSAT {
         bool start_solve = false;
         struct ManageStartVariable {
             bool &start_solve;
-            ManageStartVariable(bool &start_solve) : start_solve(start_solve) {
+            ManageStartVariable(bool &start_solve_) : start_solve(start_solve_) {
               start_solve = true;
             }
             ~ManageStartVariable() {
@@ -1269,8 +1269,8 @@ private:
     ///
         unsigned int nInputVars=0;
         public:
-        void setNInputVars(unsigned int nInputVars) { // Only used to format the size of the solution
-            this->nInputVars=nInputVars;
+        void setNInputVars(unsigned int nInputVars_) { // Only used to format the size of the solution
+            this->nInputVars=nInputVars_;
         }
         unsigned int nVars() {
             return _poids.size()-1;

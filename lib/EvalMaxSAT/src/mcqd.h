@@ -86,16 +86,16 @@ class Maxclique {
 #ifdef DBG
     void dbg_i(const string msg="") const {
       std::cout << msg << " Class: [";
-      for (int ii=0; ii < sz; ii++) 
+      for (int ii=0; ii < sz; ii++)
 	std::cout << i[ii] << " ";
       std::cout << "]" << std::endl;
     }
 #endif
-    ColorClass() : sz(0), i(0) {}
-    ColorClass(const int sz) : sz(sz), i(0) { init(sz); }
+    ColorClass() : i(0), sz(0) {}
+    ColorClass(const int sz_) : i(0), sz(sz_) { init(sz_); }
     ~ColorClass() { if (i) delete [] i;
     }
-    void init(const int sz) { i = new int[sz]; rewind(); }
+    void init(const int sz_) { i = new int[sz_]; rewind(); }
     void push(const int ii) { i[sz++] = ii; };
     void pop() { sz--; };
     void rewind() { sz = 0; };
@@ -254,7 +254,7 @@ public:
     }
   }
 #endif
-  Maxclique(const bool* const* conn, const int sz, const float tt=0.025) : pk(0), level(1), Tlimit(tt), V(sz), Q(sz), QMAX(sz) {
+  Maxclique(const bool* const* conn, const int sz, const float tt=0.025) : pk(0), level(1), Tlimit(tt), V(sz), QMAX(sz), Q(sz) {
     assert(conn!=0 && sz>0);
     for (int i=0; i < sz; i++) V.push(i);
     e_conn = conn;

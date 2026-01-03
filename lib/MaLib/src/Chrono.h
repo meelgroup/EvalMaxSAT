@@ -15,7 +15,7 @@ namespace MaLib
         class AddTime {
             Chrono* C;
         public:
-            AddTime(Chrono *C) : C(C) {
+            AddTime(Chrono *chrono) : C(chrono) {
                 assert(C->_pause == true);
                 C->pause(false);
             }

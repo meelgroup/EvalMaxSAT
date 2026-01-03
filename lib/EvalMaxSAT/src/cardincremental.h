@@ -70,8 +70,8 @@ public:
 
 public:
 
-    CardIncremental_Lazy(T *solver, const std::vector<int> &clause, unsigned int bound=0)
-        : solver(solver), nbLit(static_cast<unsigned int>(clause.size())), bound(bound), _maxVars( clause.size())
+    CardIncremental_Lazy(T *solver_, const std::vector<int> &clause, unsigned int bound_=0)
+        : solver(solver_), nbLit(static_cast<unsigned int>(clause.size())), bound(bound_), _maxVars( clause.size())
     {
         std::deque<std::shared_ptr<TotTree>> nqueue;
 
@@ -208,9 +208,9 @@ private:
         }
 
         for (unsigned i = 1; i <= maxi; ++i) {
-            unsigned maxj = std::min(rhs - i, (unsigned)bVars.size());
+            unsigned maxj2 = std::min(rhs - i, (unsigned)bVars.size());
             unsigned minj = std::max((int)last - (int)i + 1, 1);
-            for (unsigned j = minj; j <= maxj; ++j) {
+            for (unsigned j = minj; j <= maxj2; ++j) {
                 ogVars[ i + j - 1]->addImpliquant({aVars[ i - 1], bVars[ j - 1]});
             }
         }
