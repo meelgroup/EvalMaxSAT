@@ -69,10 +69,10 @@ export(
     FILE "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_TARGETS_FILENAME}"
 )
 
-# Create evalMaxSATConfig file for build tree
+# Create EvalMaxSATConfig file for build tree
 set(EXPORT_TYPE "Build-tree")
 set(CONF_INCLUDE_DIRS "${CMAKE_CURRENT_BINARY_DIR}/include")
-configure_file(evalMaxSATConfig.cmake.in
+configure_file(EvalMaxSATConfig.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_CONFIG_FILENAME}" @ONLY
 )
 
@@ -84,10 +84,10 @@ set(DEF_INSTALL_CMAKE_DIR lib/cmake/evalmaxsat)
 set(EVALMAXSAT_INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
     "Installation directory for EvalMaxSAT CMake files")
 
-# Create evalMaxSATConfig file for install tree
+# Create EvalMaxSATConfig file for install tree
 set(EXPORT_TYPE "installed")
 set(CONF_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include")
-configure_file(evalMaxSATConfig.cmake.in
+configure_file(EvalMaxSATConfig.cmake.in
    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${EVALMAXSAT_CONFIG_FILENAME}" @ONLY
 )
 
