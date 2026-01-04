@@ -14,7 +14,7 @@ set(public_libs
 set(private_libs
 	MaLib
 	# glucose
-	cadical
+	evalmax_cadical
 	EvalMaxSAT
 	z
 )
@@ -33,4 +33,8 @@ add_executable (
 target_include_directories(${projectName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 target_link_libraries(${projectName} PUBLIC ${public_libs} PRIVATE ${private_libs})
+
+install(TARGETS ${projectName}
+	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
 

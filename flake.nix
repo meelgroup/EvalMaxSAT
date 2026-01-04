@@ -34,11 +34,6 @@
 
           nativeBuildInputs = [ cmake ];
           buildInputs = [ zlib ];
-
-          postPatch = ''
-            # Enable building the main executable
-            sed -i 's|# add_subdirectory(main)|add_subdirectory(main)|' CMakeLists.txt
-          '';
         };
     in
     {

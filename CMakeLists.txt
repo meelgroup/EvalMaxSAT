@@ -29,5 +29,5 @@ add_subdirectory(lib/MaLib)
 add_subdirectory(lib/evalmax_cadical)
 add_subdirectory(lib/EvalMaxSAT)
 
-# add_subdirectory(main)
+add_subdirectory(main)
 
