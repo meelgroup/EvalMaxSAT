@@ -60,8 +60,8 @@ add_subdirectory(main)
 # Export our targets so that other CMake based projects can interface with
 # the build of EvalMaxSAT in the build-tree
 # -----------------------------------------------------------------------------
-set(EVALMAXSAT_TARGETS_FILENAME "evalMaxSATTargets.cmake")
-set(EVALMAXSAT_CONFIG_FILENAME "evalMaxSATConfig.cmake")
+set(EVALMAXSAT_TARGETS_FILENAME "EvalMaxSATTargets.cmake")
+set(EVALMAXSAT_CONFIG_FILENAME "EvalMaxSATConfig.cmake")
 
 # Export targets
 export(

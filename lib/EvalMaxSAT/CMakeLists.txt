@@ -42,3 +42,41 @@ install(FILES
 	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
+# -----------------------------------------------------------------------------
+# Copy public headers into build directory include directory.
+# The EvalMaxSATConfig.cmake we generate in the build directory depends on this.
+# -----------------------------------------------------------------------------
+set(HEADER_DEST "${CMAKE_BINARY_DIR}/include")
+add_custom_target(CopyPublicHeaders ALL)
+
+# Copy EvalMaxSAT headers
+get_target_property(evalmaxsat_public_headers ${projectName} PUBLIC_HEADER)
+foreach(public_header ${evalmaxsat_public_headers})
+    get_filename_component(HEADER_NAME ${public_header} NAME)
+    add_custom_command(TARGET CopyPublicHeaders PRE_BUILD
+                       COMMAND ${CMAKE_COMMAND} -E make_directory "${HEADER_DEST}"
+                       COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                           ${public_header}
+                           "${HEADER_DEST}"
+                      )
+endforeach()
+
+# Also copy MaLib headers (needed by EvalMaxSAT.h)
+foreach(malib_header Chrono.h coutUtil.h rand.h)
+    add_custom_command(TARGET CopyPublicHeaders PRE_BUILD
+                       COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                           "${CMAKE_CURRENT_SOURCE_DIR}/../MaLib/src/${malib_header}"
+                           "${HEADER_DEST}"
+                      )
+endforeach()
+
+# Copy evalmax_cadical public API headers
+foreach(cadical_header cadical.hpp ccadical.h)
+    add_custom_command(TARGET CopyPublicHeaders PRE_BUILD
+                       COMMAND ${CMAKE_COMMAND} -E make_directory "${HEADER_DEST}/evalmax_cadical"
+                       COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                           "${CMAKE_CURRENT_SOURCE_DIR}/../evalmax_cadical/src/${cadical_header}"
+                           "${HEADER_DEST}/evalmax_cadical"
+                      )
+endforeach()
+
