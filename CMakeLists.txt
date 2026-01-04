@@ -65,7 +65,7 @@ set(EVALMAXSAT_CONFIG_FILENAME "EvalMaxSATConfig.cmake")
 
 # Export targets
 export(
-    TARGETS EvalMaxSAT evalmax_cadical
+    TARGETS EvalMaxSAT evalmax_cadical MaLib
     FILE "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_TARGETS_FILENAME}"
 )
 

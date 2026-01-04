@@ -13,9 +13,17 @@ add_library (
     INTERFACE
 )
 
-target_include_directories(${projectName} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(${projectName} INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 
 target_link_libraries(${projectName})
+
+# Install the interface library
+install(TARGETS ${projectName}
+    EXPORT ${EVALMAXSAT_EXPORT_NAME}
+)
 
 # Note: Headers are installed by lib/EvalMaxSAT/CMakeLists.txt
 
