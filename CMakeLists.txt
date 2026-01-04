@@ -11,6 +11,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 enable_language( CXX )
 enable_language( C )
+include(GenerateExportHeader)
+include(GNUInstallDirs)
 option(BUILD_SHARED_LIBS "Build the shared library" ON)
 option(STATICCOMPILE "Compile to static executable" OFF)
 if (STATICCOMPILE)
@@ -25,9 +27,66 @@ endif()
 # generate JSON file of compile commands -- useful for code extension
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
+# -----------------------------------------------------------------------------
+# Provide an export name to be used by targets that wish to export themselves.
+# -----------------------------------------------------------------------------
+set(EVALMAXSAT_EXPORT_NAME "evalMaxSATTargets")
+
+# Version information
+set(EVALMAXSAT_VERSION_MAJOR 1)
+set(EVALMAXSAT_VERSION_MINOR 0)
+set(EVALMAXSAT_VERSION_PATCH 0)
+set(EVALMAXSAT_VERSION "${EVALMAXSAT_VERSION_MAJOR}.${EVALMAXSAT_VERSION_MINOR}.${EVALMAXSAT_VERSION_PATCH}")
+
 add_subdirectory(lib/MaLib)
 add_subdirectory(lib/evalmax_cadical)
 add_subdirectory(lib/EvalMaxSAT)
 
 add_subdirectory(main)
+
+# -----------------------------------------------------------------------------
+# Export our targets so that other CMake based projects can interface with
+# the build of EvalMaxSAT in the build-tree
+# -----------------------------------------------------------------------------
+set(EVALMAXSAT_TARGETS_FILENAME "evalMaxSATTargets.cmake")
+set(EVALMAXSAT_CONFIG_FILENAME "evalMaxSATConfig.cmake")
+
+# Export targets
+export(
+    TARGETS EvalMaxSAT evalmax_cadical
+    FILE "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_TARGETS_FILENAME}"
+)
+
+# Create evalMaxSATConfig file for build tree
+set(EXPORT_TYPE "Build-tree")
+set(CONF_INCLUDE_DIRS "${CMAKE_CURRENT_BINARY_DIR}/include")
+configure_file(evalMaxSATConfig.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_CONFIG_FILENAME}" @ONLY
+)
+
+# Export this package to the CMake user package registry
+export(PACKAGE EvalMaxSAT)
+
+# Installation directory for CMake files
+set(DEF_INSTALL_CMAKE_DIR lib/cmake/evalmaxsat)
+set(EVALMAXSAT_INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
+    "Installation directory for EvalMaxSAT CMake files")
+
+# Create evalMaxSATConfig file for install tree
+set(EXPORT_TYPE "installed")
+set(CONF_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include")
+configure_file(evalMaxSATConfig.cmake.in
+   "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${EVALMAXSAT_CONFIG_FILENAME}" @ONLY
+)
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${EVALMAXSAT_CONFIG_FILENAME}"
+    DESTINATION "${EVALMAXSAT_INSTALL_CMAKE_DIR}"
+)
+
+# Install the export set for use with the install-tree
+install(
+    EXPORT ${EVALMAXSAT_EXPORT_NAME}
+    DESTINATION "${EVALMAXSAT_INSTALL_CMAKE_DIR}"
+)
 

@@ -17,14 +17,7 @@ target_include_directories(${projectName} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/
 
 target_link_libraries(${projectName})
 
-# Install only the headers needed by EvalMaxSAT.h
-# Install to common include directory since EvalMaxSAT headers expect them in same path
-install(FILES
-	"${CMAKE_CURRENT_SOURCE_DIR}/src/Chrono.h"
-	"${CMAKE_CURRENT_SOURCE_DIR}/src/coutUtil.h"
-	"${CMAKE_CURRENT_SOURCE_DIR}/src/rand.h"
-	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-)
+# Note: Headers are installed by lib/EvalMaxSAT/CMakeLists.txt
 
 
 
