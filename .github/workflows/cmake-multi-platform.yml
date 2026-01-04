@@ -3,8 +3,6 @@
 name: CMake on multiple platforms
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -25,6 +23,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         build_type: [Release, Debug]
+        staticcompile: [ON, OFF]
 
     steps:
     - uses: actions/checkout@v3
@@ -42,6 +41,7 @@ jobs:
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DSTATICCOMPILE=${{ matrix.staticcompile }}
         -S ${{ github.workspace }}
 
     - name: Build
