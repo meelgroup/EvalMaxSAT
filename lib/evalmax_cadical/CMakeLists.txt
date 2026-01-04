@@ -35,3 +35,10 @@ install(TARGETS ${projectName}
 	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
+
+# Install public API headers
+install(FILES
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/cadical.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/ccadical.h"
+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/evalmax_cadical
+)

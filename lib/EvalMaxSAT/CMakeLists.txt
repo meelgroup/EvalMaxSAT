@@ -15,3 +15,16 @@ install(TARGETS ${projectName}
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
+# Install only the headers needed to use EvalMaxSAT.h
+# Install to a common include directory since headers expect to be in same path
+install(FILES
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/EvalMaxSAT.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/cadicalinterface.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/cardincremental.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/mcqd.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/lazyvariable.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/ParseUtils.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/utile.h"
+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
