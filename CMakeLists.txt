@@ -42,7 +42,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 # -----------------------------------------------------------------------------
 # Provide an export name to be used by targets that wish to export themselves.
 # -----------------------------------------------------------------------------
-set(EVALMAXSAT_EXPORT_NAME "evalMaxSATTargets")
+set(EVALMAXSAT_EXPORT_NAME "EvalMaxSATTargets")
 
 # Version information
 set(EVALMAXSAT_VERSION_MAJOR 1)
