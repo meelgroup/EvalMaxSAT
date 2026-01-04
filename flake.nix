@@ -29,6 +29,7 @@
               ./lib
               ./main
               ./CMakeLists.txt
+              ./evalMaxSATConfig.cmake.in
             ];
           };
 
