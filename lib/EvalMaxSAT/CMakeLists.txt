@@ -3,6 +3,8 @@ get_filename_component(projectName ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 project(${projectName})
 set(CMAKE_CXX_STANDARD 20)
 
+include(GNUInstallDirs)
+
 file(GLOB_RECURSE source_files src/*)
 
 add_library(${projectName} ${source_files})

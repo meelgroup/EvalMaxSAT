@@ -6,6 +6,8 @@ project(${projectName})
 
 set(CMAKE_CXX_STANDARD 20)
 
+include(GNUInstallDirs)
+
 add_library (
     ${projectName}
     INTERFACE
