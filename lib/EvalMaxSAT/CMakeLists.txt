@@ -4,6 +4,17 @@ project(${projectName})
 set(CMAKE_CXX_STANDARD 20)
 
 include(GNUInstallDirs)
+include(CheckCXXCompilerFlag)
+include(CheckLinkerFlag)
+macro(add_cxx_flag_if_supported flagname)
+  check_cxx_compiler_flag("${flagname}" HAVE_FLAG_${flagname})
+  if(HAVE_FLAG_${flagname})
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flagname}" )
+  endif()
+endmacro()
+add_cxx_flag_if_supported("-fno-omit-frame-pointer")
+add_cxx_flag_if_supported("-ggdb3")
+
 
 file(GLOB_RECURSE source_files src/*)
 
