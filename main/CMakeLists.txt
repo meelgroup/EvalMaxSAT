@@ -27,7 +27,7 @@ file(
 	src/*
 )
 
-add_executable (
+add_executable(
     ${projectName}
     ${source_files}
 )
