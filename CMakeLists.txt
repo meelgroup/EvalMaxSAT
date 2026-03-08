@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.15)
 
+set(CMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY ON)
+set(CMAKE_EXPORT_PACKAGE_REGISTRY OFF)
 set(projectName EvalMaxSAT_bin)
-
 message("cmake for ${projectName}")
 project(${projectName})
 
