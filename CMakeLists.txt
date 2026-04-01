@@ -81,11 +81,11 @@ macro(add_cxx_flag_if_supported flagname)
 endmacro()
 add_cxx_flag_if_supported("-fno-omit-frame-pointer")
 
-# Create EvalMaxSATConfig file for build tree
-set(EXPORT_TYPE "Build-tree")
-set(CONF_INCLUDE_DIRS "${CMAKE_CURRENT_BINARY_DIR}/include")
-configure_file(EvalMaxSATConfig.cmake.in
-    "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_CONFIG_FILENAME}" @ONLY
+# Build-tree config (absolute paths, for use without installation)
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/EvalMaxSATConfig-buildtree.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_CONFIG_FILENAME}"
+    @ONLY
 )
 
 # Export this package to the CMake user package registry
@@ -96,15 +96,26 @@ set(DEF_INSTALL_CMAKE_DIR lib/cmake/evalmaxsat)
 set(EVALMAXSAT_INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
     "Installation directory for EvalMaxSAT CMake files")
 
-# Create EvalMaxSATConfig file for install tree
-set(EXPORT_TYPE "installed")
-set(CONF_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include")
-configure_file(EvalMaxSATConfig.cmake.in
-   "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${EVALMAXSAT_CONFIG_FILENAME}" @ONLY
+# Install-tree config and version files (relocatable via CMakePackageConfigHelpers)
+set(EVALMAXSAT_INSTALL_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}")
+set(EVALMAXSAT_VERSION_FILENAME "EvalMaxSATConfigVersion.cmake")
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(EvalMaxSATConfig.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${EVALMAXSAT_CONFIG_FILENAME}"
+    INSTALL_DESTINATION "${EVALMAXSAT_INSTALL_CMAKE_DIR}"
+    PATH_VARS EVALMAXSAT_INSTALL_INCLUDEDIR
+)
+
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_VERSION_FILENAME}"
+    VERSION ${EVALMAXSAT_VERSION}
+    COMPATIBILITY SameMajorVersion
 )
 
 install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${EVALMAXSAT_CONFIG_FILENAME}"
+    "${CMAKE_CURRENT_BINARY_DIR}/${EVALMAXSAT_VERSION_FILENAME}"
     DESTINATION "${EVALMAXSAT_INSTALL_CMAKE_DIR}"
 )
 
