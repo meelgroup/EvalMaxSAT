@@ -28,6 +28,7 @@
             fileset = fs.unions [
               ./lib
               ./main
+              ./cmake
               ./CMakeLists.txt
               ./EvalMaxSATConfig.cmake.in
             ];
