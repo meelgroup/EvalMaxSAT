@@ -5,9 +5,10 @@
 #include <cassert>
 #include <vector>
 #include <set>
+#include "evalmaxsat_export.h"
 
 
-struct MySolver {
+struct EVALMAXSAT_PUBLIC MySolver {
     void* solver;
     MySolver();
     ~MySolver();
@@ -24,7 +25,7 @@ struct MySolver {
     bool failed(int lit);
 };
 
-class Solver_cadical {
+class EVALMAXSAT_PUBLIC Solver_cadical {
     MySolver *solver;
     unsigned int nVar=0;
 public:
