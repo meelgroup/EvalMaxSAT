@@ -29,7 +29,12 @@ target_include_directories(${projectName} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
-target_link_libraries(${projectName} PUBLIC MaLib PRIVATE evalmax_cadical)
+target_link_libraries(${projectName} PUBLIC MaLib evalmax_cadical)
+# Ensure Solver_cadical/MySolver symbols are exported even when the parent
+# project (e.g. arjun) sets -fvisibility=hidden globally, because arjun
+# instantiates EvalMaxSAT<Solver_cadical> in its own shared library and
+# needs those symbols to be resolvable at link time.
+target_compile_options(${projectName} PRIVATE -fvisibility=default)
 
 # Set version properties
 set_target_properties(${projectName} PROPERTIES
