@@ -29,7 +29,7 @@ target_include_directories(${projectName} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
-target_link_libraries(${projectName} PRIVATE MaLib evalmax_cadical)
+target_link_libraries(${projectName} PUBLIC MaLib PRIVATE evalmax_cadical)
 
 # Set version properties
 set_target_properties(${projectName} PROPERTIES
