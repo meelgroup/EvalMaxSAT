@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <vector>
 #include <set>
+#include "evalmax_cadical_export.h"
 
 namespace EvalMax_CaDiCaL {
 
@@ -201,7 +202,7 @@ class Clause;
 
 /*------------------------------------------------------------------------*/
 
-class Solver {
+class EVALMAX_CADICAL_PUBLIC Solver {
 
 public:
 

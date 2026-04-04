@@ -63,5 +63,6 @@ install(TARGETS ${projectName}
 install(FILES
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/cadical.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/ccadical.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/evalmax_cadical_export.h"
 	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/evalmax_cadical
 )
